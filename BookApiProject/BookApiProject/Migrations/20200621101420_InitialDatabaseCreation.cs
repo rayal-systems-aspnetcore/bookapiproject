@@ -147,8 +147,8 @@ namespace BookApiProject.Migrations
                 {
                     table.PrimaryKey("PK_BookAuthors", x => new { x.BookId, x.AuthorId });
                     table.ForeignKey(
-                        name: "FK_BookAuthors_Authors_BookId",
-                        column: x => x.BookId,
+                        name: "FK_BookAuthors_Authors_AuthorId",
+                        column: x => x.AuthorId,
                         principalTable: "Authors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -164,6 +164,11 @@ namespace BookApiProject.Migrations
                 name: "IX_Authors_CountryId",
                 table: "Authors",
                 column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookAuthors_AuthorId",
+                table: "BookAuthors",
+                column: "AuthorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookCategories_CategoryId",

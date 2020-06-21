@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Linq;
 
 namespace BookApiProject {
     public class Startup {
@@ -14,9 +15,11 @@ namespace BookApiProject {
             Configuration = configuration;
         }
         public void ConfigureServices(IServiceCollection services) {
-            //services.AddMvc();
+            services.AddControllers();
             var connectionString = Configuration["connectionStrings:bookDbConnection"];
             services.AddDbContext<BookDbContext>(c => c.UseSqlServer(connectionString));
+
+            services.AddScoped<ICountryRepository, CountryRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
@@ -26,14 +29,13 @@ namespace BookApiProject {
             }
 
             app.UseRouting();
-            //app.UseEndpoints(endpoints => {
-            //    endpoints.MapGet("/", async context => {
-            //        await context.Response.WriteAsync("Hello World!");
-            //    });
-            //});
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
+            });
 
-            context.SeedDataContext();
-            //app.UseMvc();
+            if (context.Books.Count() == 0) { 
+                context.SeedDataContext();
+            }
         }
     }
 }

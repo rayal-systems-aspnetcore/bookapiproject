@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookApiProject.Migrations
 {
     [DbContext(typeof(BookDbContext))]
-    [Migration("20200621042151_InitialDatabaseCreation")]
+    [Migration("20200621101420_InitialDatabaseCreation")]
     partial class InitialDatabaseCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,6 +82,8 @@ namespace BookApiProject.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("BookId", "AuthorId");
+
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("BookAuthors");
                 });
@@ -202,8 +204,8 @@ namespace BookApiProject.Migrations
             modelBuilder.Entity("BookApiProject.Models.BookAuthor", b =>
                 {
                     b.HasOne("BookApiProject.Models.Author", "Author")
-                        .WithMany("BookAuthor")
-                        .HasForeignKey("BookId")
+                        .WithMany("BookAuthors")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

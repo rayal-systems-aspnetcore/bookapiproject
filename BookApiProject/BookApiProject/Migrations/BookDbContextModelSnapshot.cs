@@ -81,6 +81,8 @@ namespace BookApiProject.Migrations
 
                     b.HasKey("BookId", "AuthorId");
 
+                    b.HasIndex("AuthorId");
+
                     b.ToTable("BookAuthors");
                 });
 
@@ -200,8 +202,8 @@ namespace BookApiProject.Migrations
             modelBuilder.Entity("BookApiProject.Models.BookAuthor", b =>
                 {
                     b.HasOne("BookApiProject.Models.Author", "Author")
-                        .WithMany("BookAuthor")
-                        .HasForeignKey("BookId")
+                        .WithMany("BookAuthors")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
