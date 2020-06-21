@@ -85,7 +85,33 @@ namespace BookApiProject.Controllers {
             return Ok(categoriesDto);
         }
 
-        // To Do: GetAllBooksForCategory
+        // api/categories/categoryId/books
+        [HttpGet("{categoryId}/books")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<BookDto>))]
+        public IActionResult GetAllBooksForCategory(int categoryId) {
+            if (!_categoryRepo.CategoryExists(categoryId))
+                return NotFound();
 
+            var books = _categoryRepo.GetAllBooksForCategory(categoryId);
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var booksDto = new List<BookDto>();
+
+            foreach (var book in books) {
+                booksDto.Add(new BookDto() { 
+                    Id = book.Id,
+                    Title = book.Title,
+                    ISBN = book.ISBN,
+                    DatePublished = book.DatePublished
+                });
+
+            }
+
+            return Ok(booksDto);
+        }
     }
 }
