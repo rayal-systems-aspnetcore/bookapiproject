@@ -20,6 +20,7 @@ namespace BookApiProject {
             services.AddDbContext<BookDbContext>(c => c.UseSqlServer(connectionString));
 
             services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,

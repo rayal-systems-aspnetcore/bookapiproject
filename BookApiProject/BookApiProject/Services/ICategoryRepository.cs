@@ -8,7 +8,7 @@ namespace BookApiProject.Services {
     public interface ICategoryRepository {
         ICollection<Category> GetCategories();
         Category GetCategory(int categoryId);
-        ICollection<Category> GetCategoriesOfABook(int bookId);
+        ICollection<Category> GetAllCategoriesOfABook(int bookId);
         ICollection<Book> GetAllBooksForCategory(int categoryId);
         bool CategoryExists(int categoryId);
     }
