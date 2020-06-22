@@ -21,6 +21,7 @@ namespace BookApiProject {
 
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IReviewerRepository, ReviewerRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,

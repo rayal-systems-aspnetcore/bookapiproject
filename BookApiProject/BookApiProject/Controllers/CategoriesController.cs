@@ -13,8 +13,10 @@ namespace BookApiProject.Controllers {
     [ApiController]
     public class CategoriesController : Controller {
         private ICategoryRepository _categoryRepo;
-        public CategoriesController(ICategoryRepository repository) {
+        private IBookRepository _bookRepository;
+        public CategoriesController(ICategoryRepository repository, IBookRepository bookRepo) {
             _categoryRepo = repository;
+            _bookRepository = bookRepo;
         }
 
         // api/categories
@@ -66,7 +68,8 @@ namespace BookApiProject.Controllers {
         [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<CategoryDto>))]
         public IActionResult GetAllCategoriesForABook(int bookId) {
-            // TODO: Validate the book exists
+            if (!_bookRepository.BookExists(bookId))
+                return NotFound();
 
             var categories = _categoryRepo.GetAllCategoriesOfABook(bookId);
 
@@ -108,7 +111,6 @@ namespace BookApiProject.Controllers {
                     ISBN = book.ISBN,
                     DatePublished = book.DatePublished
                 });
-
             }
 
             return Ok(booksDto);

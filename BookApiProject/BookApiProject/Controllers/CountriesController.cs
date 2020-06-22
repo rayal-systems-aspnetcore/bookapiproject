@@ -9,9 +9,11 @@ namespace BookApiProject.Controllers {
     [ApiController]
     public class CountriesController : Controller {
         private ICountryRepository _countryRepository;
+        private IAuthorRepository _authorRepo;
         
-        public CountriesController(ICountryRepository repository) {
+        public CountriesController(ICountryRepository repository, IAuthorRepository authorRepo) {
             _countryRepository = repository;
+            _authorRepo = authorRepo;
         }
 
         // api/countries
@@ -67,7 +69,8 @@ namespace BookApiProject.Controllers {
         [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(CountryDto))]
         public IActionResult GetCountryOfAnAuthor(int authorId) {
-            // TO DO - Validate the author list
+            if (!_authorRepo.AuthorExists(authorId))
+                return NotFound();
 
             var country = _countryRepository.GetCountryOfAnAuthor(authorId);
 
