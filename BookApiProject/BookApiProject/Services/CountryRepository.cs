@@ -31,5 +31,10 @@ namespace BookApiProject.Services {
         public bool CountryExists(int countryId) {
             return _countryContext.Countries.Any(c => c.Id == countryId);
         }
+
+        public bool IsDuplicateCountryName(int countryId, string countryName) {
+            var country = _countryContext.Countries.Where(c => c.Name.Trim().ToUpper() == countryName.Trim().ToUpper() && c.Id != countryId).FirstOrDefault();
+            return country == null ? false : true;
+        }
     }
 }

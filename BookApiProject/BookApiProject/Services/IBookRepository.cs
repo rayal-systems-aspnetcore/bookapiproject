@@ -5,10 +5,10 @@ namespace BookApiProject.Services {
     public interface IBookRepository {
         ICollection<Book> GetBooks();
         Book GetBook(int bookId);
-        bool GetBook(string bookISBN);
+        Book GetBook(string bookISBN);
         decimal GetBookRating(int bookId);
         bool BookExists(int bookId);
-        Book BookExists(string bookISBN);
+        bool BookExists(string bookISBN);
         bool IsDuplicateISBN(int bookId, string bookISBN);
     }
 }

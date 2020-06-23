@@ -11,5 +11,6 @@ namespace BookApiProject.Services {
         ICollection<Category> GetAllCategoriesOfABook(int bookId);
         ICollection<Book> GetAllBooksForCategory(int categoryId);
         bool CategoryExists(int categoryId);
+        bool IsDuplicateCategoryName(int categoryId, string categoryName);
     }
 }
