@@ -145,7 +145,7 @@ namespace BookApiProject.Controllers {
 
         // api/countries/countryId
         [HttpPut("{countryId}")]
-        [ProducesResponseType(201)] //no content so no type
+        [ProducesResponseType(204)] //no content so no type
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(422)]
