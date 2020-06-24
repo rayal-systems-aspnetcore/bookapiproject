@@ -46,7 +46,7 @@ namespace BookApiProject.Controllers {
         }
 
         //api/reviews/reviewId
-        [HttpGet("{reviewId}")]
+        [HttpGet("{reviewId}", Name = "GetReview")]
         [ProducesResponseType(200, Type = typeof(ReviewDto))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -117,6 +117,38 @@ namespace BookApiProject.Controllers {
             };
             return Ok(bookDto);
         }
+
+        // api/review
+        [HttpPost()]
+        [ProducesResponseType(201, Type = typeof(Review))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(422)]
+        [ProducesResponseType(500)]
+        public IActionResult CreateReview([FromBody] Review reviewToCreate) {
+
+            if (reviewToCreate == null)
+                return BadRequest(ModelState);
+
+            if (!_reviewRepo.ReviewExists(reviewToCreate.Reviewer.Id))
+                ModelState.AddModelError("", "Reviewer doesn't exists!");
+
+            if (!_bookRepo.BookExists(reviewToCreate.Book.Id))
+                ModelState.AddModelError("", "Book doesn't exists!");
+
+            if (!ModelState.IsValid)
+                return StatusCode(404, ModelState);
+
+            reviewToCreate.Book = _bookRepo.GetBook(reviewToCreate.Book.Id);
+            reviewToCreate.Reviewer = _reviewerRepo.GetReviewer(reviewToCreate.Reviewer.Id);
+
+            if (!_reviewRepo.CreateReview(reviewToCreate)) {
+                ModelState.AddModelError("", $"Something went wrong saving review");
+                return StatusCode(500, ModelState);
+            }
+            return CreatedAtRoute("GetReview", new { reviewId = reviewToCreate.Id }, reviewToCreate);
+        }
+
+
 
 
 
