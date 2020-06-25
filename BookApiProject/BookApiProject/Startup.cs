@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System.Linq;
 
 namespace BookApiProject {
@@ -15,7 +16,10 @@ namespace BookApiProject {
             Configuration = configuration;
         }
         public void ConfigureServices(IServiceCollection services) {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options => {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
+
             var connectionString = Configuration["connectionStrings:bookDbConnection"];
             services.AddDbContext<BookDbContext>(c => c.UseSqlServer(connectionString));
 

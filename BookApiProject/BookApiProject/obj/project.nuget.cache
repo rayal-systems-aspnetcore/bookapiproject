@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "H657Gfpja8eFeK/p78dfUmiy/kgeZqT7OCxf/f1+khlButqlV4uxTMIinPyXsDUaV+C0DJgMSEVWHZ2OtOCI8w==",
+  "dgSpecHash": "IZRkW4sSzRv7fG5popmwZso1R3R8aSdG5tGdaxs/sURahlw5g/sb8FRoXBmCkr/Ur5WideAK5pXFmfSLHgqiGg==",
   "success": true,
   "projectFilePath": "C:\\D\\Pankaj\\Learning\\Code\\ASP.NETCore\\ASP.NET Core Web API\\BookApiProject\\BookApiProject\\BookApiProject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\prayal\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.5\\microsoft.aspnetcore.jsonpatch.3.1.5.nupkg.sha512",
+    "C:\\Users\\prayal\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.5\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.5.nupkg.sha512",
     "C:\\Users\\prayal\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\prayal\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\prayal\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -30,6 +32,8 @@
     "C:\\Users\\prayal\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\prayal\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\prayal\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\prayal\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\prayal\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\prayal\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\prayal\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\prayal\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
