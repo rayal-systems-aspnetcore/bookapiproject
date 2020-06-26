@@ -10,5 +10,10 @@ namespace BookApiProject.Services {
         bool BookExists(int bookId);
         bool BookExists(string bookISBN);
         bool IsDuplicateISBN(int bookId, string bookISBN);
+
+        bool CreateBook(List<int> authorsId, List<int> categoriesId, Book book);
+        bool UpdateBook(List<int> authorsId, List<int> categoriesId, Book book);
+        bool DeleteBook(Book book);
+        bool Save();
     }
 }

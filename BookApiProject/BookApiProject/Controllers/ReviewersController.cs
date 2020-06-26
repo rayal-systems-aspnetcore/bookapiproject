@@ -162,6 +162,10 @@ namespace BookApiProject.Controllers {
 
         // api/reviewers/reviewerId
         [HttpDelete("{reviewerId}")]
+        [ProducesResponseType(204)] // no content
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
         public IActionResult DeleteReviewer(int reviewerId) {
             if (!_repo.ReviewerExists(reviewerId))
                 return NotFound();
